@@ -174,7 +174,7 @@ class Ajax extends CI_Controller {
 				'nama' => $nama
 			);
 		}
-		$_SESSION['ses_cart'] = $carts;
+		$this->session->set_userdata('ses_cart', $carts);
 	}
 	
 	public function load_cart(){
@@ -189,7 +189,7 @@ class Ajax extends CI_Controller {
 			</thead>
 			<tbody>";
 		$carts = $this->session->userdata('ses_cart');
-		if(count($carts) > 0){
+		if(!empty($carts)){
 			$total = 0;
 			foreach($carts as $k => $c){
 				$subtot = $c['qty']*$c['harga'];
@@ -214,7 +214,7 @@ class Ajax extends CI_Controller {
 	public function del_cart($id){
 		$carts = $this->session->userdata('ses_cart');
 		unset($carts[$id]);
-		$_SESSION['ses_cart'] = $carts;
+		$this->session->set_userdata('ses_cart', $carts);
 	}
 	
 	public function clear_cart(){

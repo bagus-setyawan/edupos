@@ -12,59 +12,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 		</div>
 		<?php endif; ?>
 		<div class="row">
-			<div class="col-lg-6">
-				<div class="box box-primary box-solid">
-					<div class="box-header">
-						<h3 class="box-title"><i class="fa fa-paper-plane-o"></i> Performa hari ini...</h3>
-					</div>
-					<div class="box-body">
-						
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6">
-				<div class="box box-primary">
-					<div class="box-header">
-						<h3 class="box-title"><i class="fa fa-clock-o"></i> Histori aktifitas</h3>
-					</div>
-					<div class="box-body" style="background-color:#d0d0d0;">
-						<ul class="timeline">
-						<?php if(isset($logs)): 
-								$tmp = "";
-								foreach($logs as $log):
-						?>
-						<?php if(date('d-m-Y', strtotime($log['created_at'])) != $tmp): ?>
-						<li class="time-label">
-							<span class="bg-blue">
-								<?php echo date('d-m-Y', strtotime($log['created_at'])); ?>
-							</span>
-						</li>
-						<?php endif; ?>
-						<li>
-							<i class="<?php echo $log['class']; ?>"></i>
-							<div class="timeline-item">
-								<span class="time"><i class="fa fa-clock-o"></i> <span class="moment"><?php echo $log['created_at']; ?></span></span>
-
-								<h3 class="timeline-header"><?php echo $log['fullname']." ".$log['judul']; ?></h3>
-
-								<?php if(!empty($log['isi'])) : ?>
-								<div class="timeline-body">
-									<?php echo $log['isi']; ?>
-								</div>
-								<?php endif; ?>
-							</div>
-						</li>
-						<!-- END timeline item -->
-					<?php 
-					$tmp = date('d-m-Y', strtotime($log['created_at']));;
-					endforeach;
-					endif; ?>
-					</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
 			<div class="col-lg-3 col-xs-6">
 				<!-- small box -->
 			  <div class="small-box bg-red">
@@ -183,6 +130,59 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 					  
 					</div>
 				  </div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="box box-primary box-solid">
+					<div class="box-header">
+						<h3 class="box-title"><i class="fa fa-paper-plane-o"></i> Performa hari ini...</h3>
+					</div>
+					<div class="box-body">
+						
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="box box-primary">
+					<div class="box-header">
+						<h3 class="box-title"><i class="fa fa-clock-o"></i> Histori aktifitas</h3>
+					</div>
+					<div class="box-body" style="background-color:#d0d0d0;">
+						<ul class="timeline">
+						<?php if(isset($logs)): 
+								$tmp = "";
+								foreach($logs as $log):
+						?>
+						<?php if(date('d-m-Y', strtotime($log['created_at'])) != $tmp): ?>
+						<li class="time-label">
+							<span class="bg-blue">
+								<?php echo date('d-m-Y', strtotime($log['created_at'])); ?>
+							</span>
+						</li>
+						<?php endif; ?>
+						<li>
+							<i class="<?php echo $log['class']; ?>"></i>
+							<div class="timeline-item">
+								<span class="time"><i class="fa fa-clock-o"></i> <span class="moment"><?php echo $log['created_at']; ?></span></span>
+
+								<h3 class="timeline-header"><?php echo $log['fullname']." ".$log['judul']; ?></h3>
+
+								<?php if(!empty($log['isi'])) : ?>
+								<div class="timeline-body">
+									<?php echo $log['isi']; ?>
+								</div>
+								<?php endif; ?>
+							</div>
+						</li>
+						<!-- END timeline item -->
+					<?php 
+					$tmp = date('d-m-Y', strtotime($log['created_at']));;
+					endforeach;
+					endif; ?>
+					</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 		
